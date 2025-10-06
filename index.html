@@ -27,7 +27,6 @@
       font-family: "ALS Sector", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
     h1, b, strong { font-weight: 700; }
-
     body {
       background-color: #0b1020;
       display: flex;
@@ -36,29 +35,40 @@
       min-height: 100vh;
       color: #e5e7eb;
     }
-
     .card {
       position: relative;
       width: 720px;
-      border-radius: 24px;
+      border-radius: 28px;
       overflow: hidden;
       border: 2px solid #f0a4ff;
       background: radial-gradient(circle at top left, #6a1fbf 0%, #3a0b52 45%, #281647 100%);
-      box-shadow: 0 0 40px rgba(240, 171, 252, 0.2);
-      padding: 64px 64px 40px 64px;
+      box-shadow: 0 0 40px rgba(240, 171, 252, 0.25);
+      padding: 60px 60px 36px 60px;
     }
-
+    .logo {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      height: 56px;
+      width: 56px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.08);
+      padding: 6px;
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(6px);
+    }
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
     .card h1 {
       font-size: 3rem;
       color: #fff;
       line-height: 1.1;
       text-align: center;
     }
-
-    .card h1 span {
-      color: #ea7cff;
-    }
-
+    .card h1 span { color: #ea7cff; }
     .subtitle {
       text-align: center;
       color: #d9ccff;
@@ -66,7 +76,6 @@
       margin-top: 12px;
       line-height: 1.6rem;
     }
-
     .main-block {
       margin-top: 40px;
       background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
@@ -74,10 +83,9 @@
       border-radius: 16px;
       padding: 24px 28px;
       display: grid;
-      grid-template-columns: 1fr 0.9fr;
+      grid-template-columns: 1.15fr 0.85fr;
       gap: 20px;
     }
-
     .badge {
       position: absolute;
       top: -12px;
@@ -90,26 +98,22 @@
       border-radius: 9999px;
       box-shadow: 0 2px 6px rgba(236,72,255,0.4);
     }
-
     .formula {
       font-size: 1.3rem;
       color: #fff;
       margin-bottom: 10px;
     }
-
     .definition {
       font-size: 1rem;
       color: #d6ccff;
       line-height: 1.4rem;
     }
-
     .tags {
       margin-top: 16px;
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
     }
-
     .tag {
       font-size: 0.85rem;
       color: #fff;
@@ -118,7 +122,6 @@
       border-radius: 9999px;
       padding: 4px 10px;
     }
-
     .footer {
       margin-top: 36px;
       text-align: center;
@@ -128,38 +131,10 @@
       justify-content: center;
       gap: 28px;
     }
-
     .footer span {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-    }
-
-    svg.graph {
-      width: 100%;
-      height: 180px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .logo {
-      position: absolute;
-      top: 20px;
-      left: 24px;
-      height: 56px;
-      width: 56px;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.08);
-      padding: 6px;
-      border: 1px solid rgba(255,255,255,0.2);
-      backdrop-filter: blur(6px);
-    }
-
-    .logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
     }
   </style>
 
@@ -185,7 +160,6 @@
 
     <div class="main-block relative">
       <div class="badge">главная тема</div>
-
       <div>
         <div class="formula">$\\displaystyle \\lim_{x \\to a} f(x) = L$</div>
         <p class="definition">
@@ -200,26 +174,28 @@
         </div>
       </div>
 
-      <div>
-        <svg viewBox="0 0 360 240" class="graph">
+      <div class="relative h-56 rounded-2xl bg-gradient-to-br from-indigo-500/20 to-fuchsia-500/20 border border-white/20 overflow-hidden">
+        <svg viewBox="0 0 360 240" class="absolute inset-0 w-full h-full">
           <defs>
             <marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
               <path d="M0,0 L6,3 L0,6 Z" fill="white" opacity="0.75"/>
             </marker>
           </defs>
-          <line x1="40" y1="200" x2="330" y2="200" stroke="white" stroke-opacity="0.6" stroke-width="1.5" marker-end="url(#arrow)"/>
-          <line x1="60" y1="220" x2="60" y2="20" stroke="white" stroke-opacity="0.6" stroke-width="1.5" marker-end="url(#arrow)"/>
-
-          <line x1="60" y1="110" x2="330" y2="110" stroke="#c084fc" stroke-width="2" stroke-dasharray="6 6"/>
-          <line x1="160" y1="20" x2="160" y2="220" stroke="#60A5FA" stroke-width="1.6" stroke-dasharray="6 6"/>
+          <line x1="40" y1="200" x2="330" y2="200" stroke="white" stroke-opacity="0.5" stroke-width="2" marker-end="url(#arrow)"/>
+          <line x1="60" y1="220" x2="60" y2="20"  stroke="white" stroke-opacity="0.5" stroke-width="2" marker-end="url(#arrow)"/>
+          <line x1="60" y1="110" x2="330" y2="110" stroke="#A78BFA" stroke-width="2" stroke-dasharray="6 6"/>
+          <rect x="60" y="90" width="270" height="40" fill="#A78BFA" opacity="0.16"/>
+          <line x1="60" y1="90"  x2="330" y2="90"  stroke="#A78BFA" stroke-opacity="0.9" stroke-dasharray="4 4" stroke-width="1.4"/>
+          <line x1="60" y1="130" x2="330" y2="130" stroke="#A78BFA" stroke-opacity="0.9" stroke-dasharray="4 4" stroke-width="1.4"/>
+          <text x="335" y="114" fill="#C7B8FF" opacity="0.95" font-size="11">y=L</text>
+          <text x="335" y="93"  fill="#C7B8FF" opacity="0.95" font-size="11">L+ε</text>
+          <text x="335" y="133" fill="#C7B8FF" opacity="0.95" font-size="11">L−ε</text>
+          <line x1="160" y1="20" x2="160" y2="220" stroke="#60A5FA" stroke-width="2" stroke-dasharray="6 6"/>
+          <text x="152" y="16" fill="#93C5FD" font-size="11">x=a</text>
           <path d="M 60 170 C 100 60, 140 60, 160 110 S 230 170, 260 155 S 300 90, 330 140"
-                fill="none" stroke="white" stroke-opacity="0.9" stroke-width="2.2"/>
-          <circle cx="160" cy="110" r="5.5" fill="#f0abfc"/>
-          <text x="170" y="100" fill="#fff" opacity="0.9" font-size="11">(a, L)</text>
-          <text x="330" y="95" fill="#d3b8ff" font-size="10">L+ε</text>
-          <text x="330" y="113" fill="#d3b8ff" font-size="10">L</text>
-          <text x="330" y="132" fill="#d3b8ff" font-size="10">L−ε</text>
-          <text x="150" y="30" fill="#93C5FD" font-size="10">x=a</text>
+                fill="none" stroke="white" stroke-opacity="0.95" stroke-width="3"/>
+          <circle cx="160" cy="110" r="5.5" fill="#F0ABFC"/>
+          <text x="168" y="102" fill="white" opacity="0.95" font-size="12">(a, L)</text>
         </svg>
       </div>
     </div>
