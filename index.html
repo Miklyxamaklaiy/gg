@@ -22,37 +22,39 @@
     :root{ font-family:"ALS Sector",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; }
     h1,b,strong{font-weight:700}
 
+    /* Фон всей страницы — однотонный */
     body{
       margin:0;
       min-height:100vh;
       display:grid;
       place-items:center;
-      background:#0b1020 radial-gradient(1200px 600px at 15% 8%, #22113c 0%, transparent 60%) no-repeat;
+      background:#0c0f1c; /* ровный фон без градиентов */
       color:#e5e7eb;
     }
 
+    /* Карточка с однородной рамкой и мягким свечением */
     .card{
       position:relative;
       width:760px;
       border-radius:28px;
       padding:64px 60px 36px;
-      border:2px solid transparent;
-      background:
-        linear-gradient(180deg, rgba(28,18,54,0.85), rgba(25,16,49,0.95)) padding-box,
-        linear-gradient(145deg,#ff7ce7, #b483ff 35%, #7aa9ff 100%) border-box;
+      border:2px solid rgba(190,130,255,0.6); /* один цвет рамки */
+      background:linear-gradient(180deg, rgba(28,18,54,0.9), rgba(25,16,49,0.95));
       box-shadow:
-        0 0 0 2px rgba(234,124,255,0.18) inset,
-        0 20px 60px rgba(234,124,255,0.18),
-        0 0 80px rgba(124,58,237,0.25);
+        0 0 0 2px rgba(190,130,255,0.12) inset,
+        0 0 60px rgba(160,100,255,0.2),
+        0 0 100px rgba(140,80,255,0.25);
       overflow:hidden;
     }
+
+    /* легкое внутреннее свечение без цветных разводов */
     .card::after{
       content:"";
       position:absolute; inset:-30px;
       border-radius:36px;
-      background:radial-gradient(600px 300px at 10% 0%, rgba(234,124,255,0.18), transparent 55%);
+      background:radial-gradient(500px 300px at 20% 0%, rgba(190,130,255,0.12), transparent 70%);
       pointer-events:none;
-      filter:blur(12px);
+      filter:blur(14px);
     }
 
     /* === ЛОГО === */
@@ -90,7 +92,7 @@
       display:grid; gap:22px; grid-template-columns:1.15fr .85fr;
       padding:24px 28px;
       border-radius:16px;
-      background:linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+      background:linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
       border:1px solid rgba(255,255,255,0.10);
     }
     .badge{
@@ -190,7 +192,6 @@
     </div>
   </div>
 
-  <!-- MathJax -->
   <script>
     window.MathJax = {
       tex: {
