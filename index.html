@@ -31,23 +31,28 @@
       color:#e5e7eb;
     }
 
+    /* Квадратная карточка */
     .card{
       position:relative;
       width:760px;
+      height:760px; /* 👈 делаем её квадратной */
       border-radius:28px;
       padding:64px 60px 36px;
       border:2px solid rgba(200,130,255,0.6);
       background:linear-gradient(180deg, #1a1233, #160e2d);
       box-shadow:none;
       overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
     }
 
     .card::after{ content:none; }
 
-    /* 🔹 Лого — увеличено и немного усилен фон */
+    /* 🔹 Лого */
     .logo{
       position:absolute; top:24px; left:24px;
-      height:72px; width:72px;               /* увеличено с 56×56 → 72×72 */
+      height:72px; width:72px;
       border-radius:14px;
       background:rgba(255,255,255,0.08);
       border:1px solid rgba(255,255,255,0.2);
@@ -74,19 +79,21 @@
 
     .main-block{
       position:relative;
-      margin-top:34px;
-      display:grid; gap:22px; grid-template-columns:1.15fr .85fr;
+      margin-top:26px;
+      flex-grow:1;
+      display:grid; gap:22px;
+      grid-template-columns:1.15fr .85fr;
       padding:24px 28px;
       border-radius:16px;
       background:linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
       border:1px solid rgba(255,255,255,0.10);
+      align-content:start;
     }
 
     .badge{
       position:absolute; top:-14px; left:26px;
       padding:6px 14px; font-size:12px; font-weight:700;
       color:#fff; background:#ec48ff; border-radius:9999px;
-      box-shadow:none;
       letter-spacing:.3px;
     }
 
@@ -103,35 +110,42 @@
     }
 
     svg.graph{
-      width:100%; height:190px; border-radius:14px;
+      width:100%; height:180px; border-radius:14px;
       background:linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
       border:1px solid rgba(255,255,255,0.10);
       display:block;
     }
 
     .footer{
-      margin-top:28px; display:flex; justify-content:center; gap:32px;
+      margin-top:20px;
+      display:flex; justify-content:center; gap:32px;
       color:#cdb7ff; font-size:16px;
     }
     .footer span{ display:inline-flex; align-items:center; gap:8px; }
 
     @media (max-width:820px){
-      .card{ width:94vw; padding:56px 20px 28px; }
+      .card{
+        width:90vw;
+        height:auto;
+        padding:56px 20px 28px;
+      }
       .main-block{ grid-template-columns:1fr; }
     }
   </style>
 </head>
 <body>
   <div class="card">
-    <div class="logo">
-      <img src="./лого свг белое.svg" alt="Логотип">
-    </div>
+    <div>
+      <div class="logo">
+        <img src="./лого свг белое.svg" alt="Логотип">
+      </div>
 
-    <h1>УЧЕБНЫЙ <span>ВЕЧЕР</span></h1>
-    <p class="subtitle">
-      Поможем разобраться в пределах и полюбить их,<br/>
-      а также подготовиться к первому РК.
-    </p>
+      <h1>УЧЕБНЫЙ <span>ВЕЧЕР</span></h1>
+      <p class="subtitle">
+        Поможем разобраться в пределах и полюбить их,<br/>
+        а также подготовиться к первому РК.
+      </p>
+    </div>
 
     <div class="main-block mathjax_process">
       <div class="badge">главная тема</div>
