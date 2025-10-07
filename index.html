@@ -31,29 +31,20 @@
       color:#e5e7eb;
     }
 
-    /* === ВНЕШНЯЯ РАМКА === */
-    .frame {
-      position: relative;
-      width: 1000px;
-      height: 1000px; /* квадрат */
-      background: #100c1c;
-      border: 4px solid rgba(200,130,255,0.7); /* фиолетовая рамка */
-      border-radius: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 0 2px rgba(234,124,255,0.15) inset;
-    }
-
-    /* === КАРТОЧКА ВНУТРИ === */
+    /* === КВАДРАТНАЯ КАРТОЧКА === */
     .card{
       position:relative;
-      width:760px;
+      width:900px;
+      height:900px; /* 👈 квадратная форма */
       border-radius:28px;
       padding:64px 60px 36px;
-      border:2px solid rgba(200,130,255,0.5);
+      border:2px solid rgba(200,130,255,0.6);
       background:linear-gradient(180deg, #1a1233, #160e2d);
+      box-shadow:none;
       overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
     }
 
     .logo{
@@ -73,19 +64,19 @@
 
     .card h1{
       margin:0;
-      font-size:52px; line-height:1.05; text-align:center; letter-spacing:.5px;
+      font-size:58px; line-height:1.1; text-align:center; letter-spacing:.5px;
       color:#fff;
     }
     .card h1 span{ color:#ea7cff; display:inline-block; }
     .subtitle{
       margin-top:12px;
-      text-align:center; color:#d9ccff; font-size:18px; line-height:1.6;
+      text-align:center; color:#d9ccff; font-size:20px; line-height:1.6;
       opacity:.95;
     }
 
     .main-block{
       position:relative;
-      margin-top:34px;
+      margin-top:40px;
       display:grid; gap:22px; grid-template-columns:1.15fr .85fr;
       padding:24px 28px;
       border-radius:16px;
@@ -100,12 +91,12 @@
       letter-spacing:.3px;
     }
 
-    .formula{ font-size:22px; color:#fff; margin-bottom:10px; }
-    .definition{ font-size:15px; color:#d6ccff; line-height:1.45; }
+    .formula{ font-size:24px; color:#fff; margin-bottom:10px; }
+    .definition{ font-size:16px; color:#d6ccff; line-height:1.45; }
 
     .tags{ margin-top:16px; display:flex; flex-wrap:wrap; gap:8px; }
     .tag{
-      font-size:13px; color:#fff;
+      font-size:14px; color:#fff;
       padding:6px 12px; border-radius:9999px;
       background:rgba(255,255,255,0.08);
       border:1px solid rgba(255,255,255,0.20);
@@ -113,7 +104,7 @@
     }
 
     svg.graph{
-      width:100%; height:190px; border-radius:14px;
+      width:100%; height:220px; border-radius:14px;
       background:linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
       border:1px solid rgba(255,255,255,0.10);
       display:block;
@@ -121,14 +112,19 @@
 
     .footer{
       margin-top:28px; display:flex; justify-content:center; gap:32px;
-      color:#cdb7ff; font-size:16px;
+      color:#cdb7ff; font-size:18px;
     }
     .footer span{ display:inline-flex; align-items:center; gap:8px; }
+
+    @media (max-width:900px){
+      .card{ width:90vw; height:auto; padding:56px 20px 28px; }
+      .main-block{ grid-template-columns:1fr; }
+    }
   </style>
 </head>
 <body>
-  <div class="frame">
-    <div class="card">
+  <div class="card">
+    <div>
       <div class="logo">
         <img src="./лого свг белое.svg" alt="Логотип">
       </div>
@@ -138,51 +134,51 @@
         Поможем разобраться в пределах и полюбить их,<br/>
         а также подготовиться к первому РК.
       </p>
+    </div>
 
-      <div class="main-block mathjax_process">
-        <div class="badge">главная тема</div>
+    <div class="main-block mathjax_process">
+      <div class="badge">главная тема</div>
 
-        <div>
-          <div class="formula">$\displaystyle \lim_{x\to a} f(x)=L$</div>
-          <p class="definition">
-            Строгое определение: $\forall\,\varepsilon>0\ \exists\,\delta>0$ такие, что<br/>
-            $0<|x-a|<\delta \Rightarrow |f(x)-L|<\varepsilon.$
-          </p>
-          <div class="tags">
-            <span class="tag">∞ бесконечно малые</span>
-            <span class="tag">Σ правила пределов</span>
-            <span class="tag">⌗ типовые задачи</span>
-            <span class="tag">▹ графический смысл</span>
-          </div>
-        </div>
-
-        <div>
-          <svg viewBox="0 0 360 240" class="graph" role="img" aria-label="График функции и линии x=a, y=L">
-            <defs>
-              <marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-                <path d="M0,0 L6,3 L0,6 Z" fill="white" opacity="0.75"/>
-              </marker>
-            </defs>
-            <line x1="40" y1="200" x2="330" y2="200" stroke="white" stroke-opacity="0.6" stroke-width="1.6" marker-end="url(#arrow)"/>
-            <line x1="60" y1="220" x2="60" y2="20"   stroke="white" stroke-opacity="0.6" stroke-width="1.6" marker-end="url(#arrow)"/>
-            <line x1="60" y1="110" x2="330" y2="110" stroke="#c084fc" stroke-width="2" stroke-dasharray="6 6"/>
-            <line x1="165" y1="20" x2="165" y2="220" stroke="#60A5FA" stroke-width="1.8" stroke-dasharray="6 6"/>
-            <path d="M 60 170 C 100 60, 140 60, 165 110 S 235 170, 265 155 S 300 90, 330 140"
-                  fill="none" stroke="white" stroke-opacity="0.92" stroke-width="2.4"/>
-            <circle cx="165" cy="110" r="5.8" fill="#f0abfc"/>
-            <text x="174" y="100" fill="#ffffff" opacity="0.9" font-size="11">(a, L)</text>
-            <text x="330" y="95"  fill="#d3b8ff" font-size="10">L+ε</text>
-            <text x="330" y="113" fill="#d3b8ff" font-size="10">L</text>
-            <text x="330" y="132" fill="#d3b8ff" font-size="10">L−ε</text>
-            <text x="152" y="30"  fill="#93C5FD" font-size="10">x=a</text>
-          </svg>
+      <div>
+        <div class="formula">$\displaystyle \lim_{x\to a} f(x)=L$</div>
+        <p class="definition">
+          Строгое определение: $\forall\,\varepsilon>0\ \exists\,\delta>0$ такие, что<br/>
+          $0<|x-a|<\delta \Rightarrow |f(x)-L|<\varepsilon.$
+        </p>
+        <div class="tags">
+          <span class="tag">∞ бесконечно малые</span>
+          <span class="tag">Σ правила пределов</span>
+          <span class="tag">⌗ типовые задачи</span>
+          <span class="tag">▹ графический смысл</span>
         </div>
       </div>
 
-      <div class="footer">
-        <span>📅 10 октября</span>
-        <span>⏰ 18:00</span>
+      <div>
+        <svg viewBox="0 0 360 240" class="graph" role="img" aria-label="График функции и линии x=a, y=L">
+          <defs>
+            <marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="white" opacity="0.75"/>
+            </marker>
+          </defs>
+          <line x1="40" y1="200" x2="330" y2="200" stroke="white" stroke-opacity="0.6" stroke-width="1.6" marker-end="url(#arrow)"/>
+          <line x1="60" y1="220" x2="60" y2="20"   stroke="white" stroke-opacity="0.6" stroke-width="1.6" marker-end="url(#arrow)"/>
+          <line x1="60" y1="110" x2="330" y2="110" stroke="#c084fc" stroke-width="2" stroke-dasharray="6 6"/>
+          <line x1="165" y1="20" x2="165" y2="220" stroke="#60A5FA" stroke-width="1.8" stroke-dasharray="6 6"/>
+          <path d="M 60 170 C 100 60, 140 60, 165 110 S 235 170, 265 155 S 300 90, 330 140"
+                fill="none" stroke="white" stroke-opacity="0.92" stroke-width="2.4"/>
+          <circle cx="165" cy="110" r="5.8" fill="#f0abfc"/>
+          <text x="174" y="100" fill="#ffffff" opacity="0.9" font-size="11">(a, L)</text>
+          <text x="330" y="95"  fill="#d3b8ff" font-size="10">L+ε</text>
+          <text x="330" y="113" fill="#d3b8ff" font-size="10">L</text>
+          <text x="330" y="132" fill="#d3b8ff" font-size="10">L−ε</text>
+          <text x="152" y="30"  fill="#93C5FD" font-size="10">x=a</text>
+        </svg>
       </div>
+    </div>
+
+    <div class="footer">
+      <span>📅 10 октября</span>
+      <span>⏰ 18:00</span>
     </div>
   </div>
 
