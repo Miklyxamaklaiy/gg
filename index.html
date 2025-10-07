@@ -1,198 +1,27 @@
-<!doctype html>
-<html lang="ru">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="color-scheme" content="dark">
-  <title>Учебный вечер</title>
+/* 👉 сам постер (карточка) — делаем квадратным и без скруглений */
+.card{
+  position:relative;
+  width:760px;              /* можешь поменять на свой размер */
+  aspect-ratio: 1 / 1;      /* квадрат */
+  height:auto;              /* посчитается из aspect-ratio */
+  border-radius:0;          /* без скруглений */
+  padding:64px 60px 36px;
+  border:2px solid rgba(200,130,255,0.6);
+  background:linear-gradient(180deg, #1a1233, #160e2d);
+  box-shadow:none;
+  overflow:auto;            /* если контента больше, появится скролл */
+}
 
-  <script src="https://cdn.tailwindcss.com"></script>
+/* 👉 блок с графиком — тоже квадрат и без скруглений */
+svg.graph{
+  width:100%;
+  aspect-ratio: 1 / 1;   /* квадратная область */
+  height:auto;
+  border-radius:0;       /* без скруглений */
+  background:linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+  border:1px solid rgba(255,255,255,0.10);
+  display:block;
+}
 
-  <style>
-    @font-face{
-      font-family:"ALS Sector";
-      src:url("./ALS_Sector-Regular.otf") format("opentype");
-      font-weight:400;font-style:normal;font-display:swap;
-    }
-    @font-face{
-      font-family:"ALS Sector";
-      src:url("./ALS_Sector-Bold.otf") format("opentype");
-      font-weight:700;font-style:normal;font-display:swap;
-    }
-    :root{ font-family:"ALS Sector",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; }
-    h1,b,strong{font-weight:700}
-
-    body{
-      margin:0;
-      min-height:100vh;
-      display:grid;
-      place-items:center;
-      background:#0b0e1a;
-      color:#e5e7eb;
-    }
-
-    .card{
-      position:relative;
-      width:760px;
-      border-radius:28px;
-      padding:64px 60px 36px;
-      border:2px solid rgba(200,130,255,0.6);
-      background:linear-gradient(180deg, #1a1233, #160e2d);
-      box-shadow:none;
-      overflow:hidden;
-    }
-
-    .card::after{ content:none; }
-
-    /* 🔹 Лого — увеличено и немного усилен фон */
-    .logo{
-      position:absolute; top:24px; left:24px;
-      height:72px; width:72px;               /* увеличено с 56×56 → 72×72 */
-      border-radius:14px;
-      background:rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.2);
-      backdrop-filter:blur(6px);
-      display:flex; align-items:center; justify-content:center;
-      z-index:2;
-    }
-    .logo img{
-      width:88%; height:88%; object-fit:contain;
-      filter:drop-shadow(0 0 4px rgba(255,255,255,0.3));
-    }
-
-    .card h1{
-      margin:0;
-      font-size:52px; line-height:1.05; text-align:center; letter-spacing:.5px;
-      color:#fff;
-    }
-    .card h1 span{ color:#ea7cff; display:inline-block; }
-    .subtitle{
-      margin-top:12px;
-      text-align:center; color:#d9ccff; font-size:18px; line-height:1.6;
-      opacity:.95;
-    }
-
-    .main-block{
-      position:relative;
-      margin-top:34px;
-      display:grid; gap:22px; grid-template-columns:1.15fr .85fr;
-      padding:24px 28px;
-      border-radius:16px;
-      background:linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-      border:1px solid rgba(255,255,255,0.10);
-    }
-
-    .badge{
-      position:absolute; top:-14px; left:26px;
-      padding:6px 14px; font-size:12px; font-weight:700;
-      color:#fff; background:#ec48ff; border-radius:9999px;
-      box-shadow:none;
-      letter-spacing:.3px;
-    }
-
-    .formula{ font-size:22px; color:#fff; margin-bottom:10px; }
-    .definition{ font-size:15px; color:#d6ccff; line-height:1.45; }
-
-    .tags{ margin-top:16px; display:flex; flex-wrap:wrap; gap:8px; }
-    .tag{
-      font-size:13px; color:#fff;
-      padding:6px 12px; border-radius:9999px;
-      background:rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.20);
-      white-space:nowrap;
-    }
-
-    svg.graph{
-      width:100%; height:190px; border-radius:14px;
-      background:linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
-      border:1px solid rgba(255,255,255,0.10);
-      display:block;
-    }
-
-    .footer{
-      margin-top:28px; display:flex; justify-content:center; gap:32px;
-      color:#cdb7ff; font-size:16px;
-    }
-    .footer span{ display:inline-flex; align-items:center; gap:8px; }
-
-    @media (max-width:820px){
-      .card{ width:94vw; padding:56px 20px 28px; }
-      .main-block{ grid-template-columns:1fr; }
-    }
-  </style>
-</head>
-<body>
-  <div class="card">
-    <div class="logo">
-      <img src="./лого свг белое.svg" alt="Логотип">
-    </div>
-
-    <h1>УЧЕБНЫЙ <span>ВЕЧЕР</span></h1>
-    <p class="subtitle">
-      Поможем разобраться в пределах и полюбить их,<br/>
-      а также подготовиться к первому РК.
-    </p>
-
-    <div class="main-block mathjax_process">
-      <div class="badge">главная тема</div>
-
-      <div>
-        <div class="formula">$\displaystyle \lim_{x\to a} f(x)=L$</div>
-        <p class="definition">
-          Строгое определение: $\forall\,\varepsilon>0\ \exists\,\delta>0$ такие, что<br/>
-          $0<|x-a|<\delta \Rightarrow |f(x)-L|<\varepsilon.$
-        </p>
-        <div class="tags">
-          <span class="tag">∞ бесконечно малые</span>
-          <span class="tag">Σ правила пределов</span>
-          <span class="tag">⌗ типовые задачи</span>
-          <span class="tag">▹ графический смысл</span>
-        </div>
-      </div>
-
-      <div>
-        <svg viewBox="0 0 360 240" class="graph" role="img" aria-label="График функции и линии x=a, y=L">
-          <defs>
-            <marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-              <path d="M0,0 L6,3 L0,6 Z" fill="white" opacity="0.75"/>
-            </marker>
-          </defs>
-          <line x1="40" y1="200" x2="330" y2="200" stroke="white" stroke-opacity="0.6" stroke-width="1.6" marker-end="url(#arrow)"/>
-          <line x1="60" y1="220" x2="60" y2="20"   stroke="white" stroke-opacity="0.6" stroke-width="1.6" marker-end="url(#arrow)"/>
-          <line x1="60" y1="110" x2="330" y2="110" stroke="#c084fc" stroke-width="2" stroke-dasharray="6 6"/>
-          <line x1="165" y1="20" x2="165" y2="220" stroke="#60A5FA" stroke-width="1.8" stroke-dasharray="6 6"/>
-          <path d="M 60 170 C 100 60, 140 60, 165 110 S 235 170, 265 155 S 300 90, 330 140"
-                fill="none" stroke="white" stroke-opacity="0.92" stroke-width="2.4"/>
-          <circle cx="165" cy="110" r="5.8" fill="#f0abfc"/>
-          <text x="174" y="100" fill="#ffffff" opacity="0.9" font-size="11">(a, L)</text>
-          <text x="330" y="95"  fill="#d3b8ff" font-size="10">L+ε</text>
-          <text x="330" y="113" fill="#d3b8ff" font-size="10">L</text>
-          <text x="330" y="132" fill="#d3b8ff" font-size="10">L−ε</text>
-          <text x="152" y="30"  fill="#93C5FD" font-size="10">x=a</text>
-        </svg>
-      </div>
-    </div>
-
-    <div class="footer">
-      <span>📅 10 октября</span>
-      <span>⏰ 18:00</span>
-    </div>
-  </div>
-
-  <!-- MathJax -->
-  <script>
-    window.MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']],
-        processEscapes: true, processEnvironments: true
-      },
-      options: {
-        skipHtmlTags: ['script','noscript','style','textarea','pre','code'],
-        processHtmlClass: 'mathjax_process'
-      }
-    };
-  </script>
-  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
-</body>
-</html>
+/* (по желанию) убрать скругления у внутреннего серого блока */
+.main-block{ border-radius:0; }
